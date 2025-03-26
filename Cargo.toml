@@ -1,0 +1,8 @@
+[package]
+name = "mofa_search_agent_contest"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+eyre = "0.6.12"
+tokio = { version = "1.44.1", features = ["full"] }
