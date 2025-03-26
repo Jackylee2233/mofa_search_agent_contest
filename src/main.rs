@@ -1,50 +1,63 @@
 use eyre::{bail, Context};
 use std::path::Path;
+use std::fs;
 
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
-
     let root = Path::new(env!("CARGO_MANIFEST_DIR"));
-    std::env::set_current_dir(root.join(file!()).parent().unwrap())
-        .wrap_err("failed to set working dir")?;
+    println!("root: {:?}", root);
+    
+    // Ensure mofa_search_agent directory exists
+    let agent_dir = root.join("mofa_search_agent");
+    if !agent_dir.exists() {
+        println!("Creating mofa_search_agent directory...");
+        fs::create_dir_all(&agent_dir)?;
+    }
 
-    let args: Vec<String> = std::env::args().collect();
-    let dataflow = if args.len() > 1 {
-        Path::new(&args[1])
-    } else {
-        Path::new("dataflow.yml")
-    };
-
-    build_dataflow(dataflow).await?;
-
-    run_dataflow(dataflow).await?;
-
+    enter_dataflow().await?;
+    build_dataflow().await?;
+    start_dataflow().await?;
     Ok(())
 }
 
-async fn build_dataflow(dataflow: &Path) -> eyre::Result<()> {
-    let cargo = std::env::var("CARGO").unwrap();
-    let mut cmd = tokio::process::Command::new(&cargo);
-    cmd.arg("run");
-    cmd.arg("--package").arg("dora-cli");
-    cmd.arg("--").arg("build").arg(dataflow);
-    if !cmd.status().await?.success() {
-        bail!("failed to build dataflow");
-    };
+async fn enter_dataflow() -> eyre::Result<()> {
+    std::env::set_current_dir("./mofa_search_agent")
+        .wrap_err("failed to change directory to mofa_search_agent")?;
     Ok(())
 }
 
-async fn run_dataflow(dataflow: &Path) -> eyre::Result<()> {
-    let cargo = std::env::var("CARGO").unwrap();
-    let mut cmd = tokio::process::Command::new(&cargo);
-    cmd.arg("run");
-    cmd.arg("--package").arg("dora-cli");
-    cmd.arg("--")
-        .arg("daemon")
-        .arg("--run-dataflow")
-        .arg(dataflow);
-    if !cmd.status().await?.success() {
-        bail!("failed to run dataflow");
-    };
+async fn build_dataflow() -> eyre::Result<()> {
+    let dora = std::env::var("DORA")
+        .wrap_err("DORA environment variable not set")?;
+    
+    let mut cmd = tokio::process::Command::new(&dora);
+    cmd.arg("build").arg("dataflow.yml");
+    
+    let status = cmd.status().await
+        .wrap_err("failed to execute dora build command")?;
+        
+    if !status.success() {
+        bail!("dora build command failed");
+    }
+    
     Ok(())
 }
+
+async fn start_dataflow() -> eyre::Result<()> {
+    let dora = std::env::var("DORA")
+        .wrap_err("DORA environment variable not set")?;
+    
+    let mut cmd = tokio::process::Command::new(&dora);
+    cmd.arg("start").arg("dataflow.yml");
+    
+    let status = cmd.status().await
+        .wrap_err("failed to execute dora build command")?;
+        
+    if !status.success() {
+        bail!("dora start command failed");
+    }
+    
+    Ok(())
+}
+
+
