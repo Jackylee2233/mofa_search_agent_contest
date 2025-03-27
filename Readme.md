@@ -36,7 +36,9 @@ This project is based on Rust.
      - Alternatively, use `dora check` to inspect the Dora status.
 3. Run the project:
    - Set the environment variable: `DORA=dora`
-   - Command: `cargo run`
+   - Then Run Command: `cargo run`
+   
+   - Full Command: `DORA=dora cargo run`
      - This command will act as a wrapper to automatically execute:
        - `dora build dataflow.yml`
        - `dora start dataflow.yml`
