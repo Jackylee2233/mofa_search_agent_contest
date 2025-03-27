@@ -119,6 +119,15 @@ graph TB
 
 **Map the communication interfaces between talker and listensr components**
 ```mermaid
+%%{init: {'theme': 'default', 'themeVariables': { 
+    'background': '#ffffff',
+    'primaryColor': '#f4f4f4',
+    'primaryTextColor': '#333333',
+    'primaryBorderColor': '#cccccc',
+    'lineColor': '#666666',
+    'secondaryColor': '#f9f9f9',
+    'tertiaryColor': '#fff'
+}}}%%
 graph TD
     %% Timer Components
     Timer100ms[Timer 100ms]
@@ -177,17 +186,6 @@ graph TD
     L1Init --> L1Event
     L1Event -->|on input| L1Process
     L1Error -.->|handle| L1Event
-
-    %% Style Definitions
-    classDef timer fill:#f9f,stroke:#333
-    classDef component fill:#bbf,stroke:#333
-    classDef serialization fill:#bfb,stroke:#333
-    classDef error fill:#fbb,stroke:#333
-
-    class Timer100ms,Timer1s,Timer2s timer
-    class T1Init,T1Event,T1Send,T2Init,T2Event,T2Send,L1Init,L1Event,L1Process component
-    class ArrowSer,ArrowDeser serialization
-    class T1Error,T2Error,L1Error error
 
 ```
 
