@@ -188,3 +188,8 @@ graph TD
     class T1Error,T2Error,L1Error error
 
 ```
+
+
+### 许可证
+
+本项目采用MIT许可证。有关详细信息，请查看 [LICENSE](LICENSE) 文件。
