@@ -1,6 +1,6 @@
 ### How to Start the Project
 
-This project is based on Rust.
+This project is based on Rust. 
 
 #### Prerequisites:
 - Install [Rust 2024 Edition](https://www.rust-lang.org/tools/install).
@@ -23,7 +23,7 @@ This project is based on Rust.
 - Clone the repository:
   - Command: `git clone https://github.com/mofa***.git`
 
-#### Run the Project:
+#### Run the Project: (Ubuntu 24.10 tested)
 1. Navigate to the project directory:
    - Command: `cd mofa_search_agent_contest`
 2. Start Dora services:
@@ -53,7 +53,7 @@ This project is based on Rust.
 
 ### Project diagram
 
-This is the basic dora project diagram, will auto update after every commit push.
+This is auto generated project diagram, will auto update after every commit push.
 
 ```mermaid
 graph TB
@@ -189,7 +189,11 @@ graph TD
 
 ```
 
+### Relating to rust-analyzer
+Since the entire Dora project (`mofa_search_agent`) is placed within a single Rust project (`mofa_search_agent_contest`), the Dora project essentially functions as a Rust workspace. However, having a workspace nested within another Rust project is currently not supported by rust-analyzer for syntax hints, suggestions, and similar features.
 
-### 许可证
+The solution is to open the Dora project separately in another IDE window. This way, you can fully utilize the support provided by rust-analyzer.
 
-本项目采用MIT许可证。有关详细信息，请查看 [LICENSE](LICENSE) 文件。
+### License
+
+This project uses the MIT license. For more information, see the [LICENSE](LICENSE) file.
