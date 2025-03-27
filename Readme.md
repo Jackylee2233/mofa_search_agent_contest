@@ -21,7 +21,7 @@ This project is based on Rust.
 
 #### Clone the Project:
 - Clone the repository:
-  - Command: `git clone https://github.com/mofa***.git`
+  - Command: `git clone https://github.com/Jackylee2233/mofa_search_agent_contest.git`
 
 #### Run the Project: (Ubuntu 24.10 tested)
 1. Navigate to the project directory:
