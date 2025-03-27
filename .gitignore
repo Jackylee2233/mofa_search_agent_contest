@@ -2,4 +2,6 @@
 **/out
 .explain
 mofa_dev_notes.md
+Readme-old.md
 *.mmd
+.gitignore

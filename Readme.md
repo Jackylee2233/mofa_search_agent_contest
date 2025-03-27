@@ -1,43 +1,52 @@
-### How to start project
+### How to Start the Project
 
-This project is Rust based.
-- prerequirement:
-    * install [Rust 2024 Edition ](https://www.rust-lang.org/tools/install)
-        * `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-    * install [Dora-cli](https://dora-rs.ai/zh-CN/)
-        * `cargo install dora-cli`
-        * In case of issues, try: `--locked`
-        
-- success run setup ref:
-not necessary the same version but need Rust 2024 Edition
-    * `rustc --version`
-        * rustc 1.85.1 (4eb161250 2025-03-15)
-    * `cargo --version`
-        * cargo 1.85.1 (d73d2caf9 2024-12-31)
+This project is based on Rust.
 
-    * `dora --version`
-        * dora-cli 0.3.10
+#### Prerequisites:
+- Install [Rust 2024 Edition](https://www.rust-lang.org/tools/install).
+  - Command: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- Install [Dora-cli](https://dora-rs.ai/zh-CN/).
+  - Command: `cargo install dora-cli`
+  - If you encounter issues, try using the `--locked` flag.
 
-- clone project:
-    * `git clone https://github.com/mofa***.git`
+#### Verify Successful Setup:
+- Ensure you have Rust 2024 Edition:
+  - Check Rust version: `rustc --version`
+    - Example: rustc 1.85.1 (4eb161250 2025-03-15)
+  - Check Cargo version: `cargo --version`
+    - Example: cargo 1.85.1 (d73d2caf9 2024-12-31)
+- Check Dora-cli version:
+  - Command: `dora --version`
+    - Example: dora-cli 0.3.10
 
-- enter project and run command:
-    * `cd mofa_search_agent_contest` 
-    * `dora up`
-        * show: started dora coordinator
-        * show: started dora daemon
-        * if show error: run `dora destroy` before `dora up` or run `dora check` to get dora status.
-    * `DORA=dora cargo run` 
-        * must set env `DORA=dora` before `cargo run`
-        * this `cargo run` will run a dora wapper to auto run `dora build dataflow.yml` and `doar start dataflow.yml`for you.
+#### Clone the Project:
+- Clone the repository:
+  - Command: `git clone https://github.com/mofa***.git`
 
-### How to stop project.
+#### Run the Project:
+1. Navigate to the project directory:
+   - Command: `cd mofa_search_agent_contest`
+2. Start Dora services:
+   - Command: `dora up`
+   - Output should display:
+     - "Started dora coordinator"
+     - "Started dora daemon"
+   - If errors occur:
+     - Run `dora destroy` before retrying `dora up`.
+     - Alternatively, use `dora check` to inspect the Dora status.
+3. Run the project:
+   - Set the environment variable: `DORA=dora`
+   - Command: `cargo run`
+     - This command will act as a wrapper to automatically execute:
+       - `dora build dataflow.yml`
+       - `dora start dataflow.yml`
 
-- you are running a scaffolding projcet, so far, it will run infinite loop to demonstrate a base dora porjcet, `Ctrl+C` in your terminal will stop the projcet.
+### How to Stop the Project
 
-...TODO!
-- as project going will update here.
+- The project runs in an infinite loop to demonstrate the Dora framework. To stop it, press `Ctrl+C` in your terminal.
 
-### How to debug project.
+*Note: Updates will be added here as the project evolves.*
 
-- building debug in the `out` folder under the root of `mofa_search_agent`
+### How to Debug the Project
+
+- Debug information can be found in the `out` folder located in the root directory of `mofa_search_agent`.
