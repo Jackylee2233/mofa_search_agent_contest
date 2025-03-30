@@ -19,7 +19,7 @@ live_design! {
             draw_bg: {
                 border_width: 1.0,
                 border_color: #D0D5DD,
-                radius: 5.0
+                radius: 10.0
             },
             <View> {
                 show_bg: true,

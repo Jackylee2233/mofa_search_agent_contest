@@ -42,9 +42,12 @@
 Moly's frontend enables seamless interaction with remote LLM services without requiring a server and connects to local LLM services through `moly-server`. Local services manage simpler queries, while more complex tasks are delegated to remote LLMs, ensuring efficient token usage and cost optimization.
 
 - [ ] **To-Do**
+  0. [x] With in `mofa_search_agent` workspace, create `mofa_frontend` project and add `moly-kit` as lib.03-28-2025 14:50
+  0.1 [ ] modify `mofa_frontend` base on `moly-mini`
   1. [ ] Upgrade `moly-server` to support WebSocket connections.
-  2. [ ] Add `WebSocket` client functionality to the Moly frontend and a control node in the `Dora` project.
-  3. [ ] Establish real-time communication between `moly-server`, `moly`, and `dora` via WebSocket.
+  2. [ ] Add `WebSocket` client functionality to the `moly_frontend`.
+  3. [ ] Add `WebSocket` client to control node of the  `Dora` project.
+  4. [ ] Establish real-time communication between `moly-server`, `moly`, and `dora` via WebSocket.
 
 - [ ] **Dataflow Design**
   1. [ ] Initial inquiry processed in Moly, response passed to Dora for iterative processing in its nodes, and results sent back to Moly for display.

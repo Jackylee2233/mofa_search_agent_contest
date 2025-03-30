@@ -43,6 +43,26 @@ This project is based on Rust.
        - `dora build dataflow.yml`
        - `dora start dataflow.yml`
 
+#### Run the Project: (Windows11 tested)
+1. Navigate to the project directory:
+   - Command: `cd mofa_search_agent_contest`
+2. Start Dora services:
+   - Command: `dora up`
+   - Output should display:
+     - "Started dora coordinator"
+     - "Started dora daemon"
+   - If errors occur:
+     - Run `dora destroy` before retrying `dora up`.
+     - Alternatively, use `dora check` to inspect the Dora status.
+3. Run the project:
+   - Set the environment variable: `$env:DORA="dora"`
+   - Then Run Command: `cargo run`
+   
+   - Full Command: `$env:DORA="dora";cargo run`
+     - This command will act as a wrapper to automatically execute:
+       - `dora build dataflow.yml`
+       - `dora start dataflow.yml`
+
 ### How to Stop the Project
 
 - The project runs in an infinite loop to demonstrate the Dora framework. To stop it, press `Ctrl+C` in your terminal.
