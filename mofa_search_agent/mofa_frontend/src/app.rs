@@ -1,5 +1,26 @@
-use makepad_widgets::*;
+//AppMain 是 Makepad 中用于定义应用程序主循环的 trait。
+impl AppMain for App {
+    /* 这是 AppMain trait 要求实现的唯一方法。它负责处理应用程序中的所有事件，例如鼠标点击、键盘输入等。
+    cx: &mut Cx: Cx 是 Makepad 的核心上下文对象，它包含了应用程序的状态和资源。
+    event: &Event: Event 是一个枚举类型，表示各种不同的事件。
+    self.ui.handle_event(...): 这行代码将事件传递给 ui 组件进行处理。Scope::empty() 表示一个空的事件作用域。
+    */
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
+        /* 
+        self.ui: 这表示访问 App 实例的 ui 字段。根据上下文，ui 字段是一个 WidgetRef 类型的智能指针，它指向应用程序的根 UI 组件。
+            中文解释: 访问 App 实例的 ui 字段，它指向根 UI 组件。
 
+        .handle_event(cx, event, &mut Scope::empty()): 这调用了 ui 组件的 handle_event 方法，并将 cx、event 和 &mut Scope::empty() 作为参数传递给它。
+            cx: 将 Makepad 上下文对象传递给 ui 组件，以便它可以使用应用程序的状态和资源。
+            event: 将发生的事件传递给 ui 组件，以便它能够处理该事件。
+            &mut Scope::empty(): 这创建了一个空的 Scope 对象，并将其作为可变引用传递给 ui 组件。Scope 用于管理事件的作用域，Scope::empty() 表示一个空的事件作用域。
+            中文解释: 调用根 UI 组件的 handle_event 方法来处理事件，并将上下文对象、事件对象和一个空的事件作用域传递给它。
+         */
+        self.ui.handle_event(cx, event, &mut Scope::empty());
+    }
+}
+
+use makepad_widgets::*;
 /* 
 live_design! 是 Makepad 框架提供的一个宏，它的主要作用是：
 声明式 UI 定义 (Declarative UI Definition): 它允许你以一种声明式的方式来描述 UI 的结构和外观，而不是通过编写大量的命令式代码。
@@ -31,37 +52,16 @@ live_design!(
         ui: <Ui> {} //这行代码定义了 App 的一个名为 ui 的字段，它的类型是 <Ui>。<Ui> 是在 crate::ui 模块中定义的 UI 组件。{} 表示 Ui 组件的默认配置。
     }
 );
-/* 
-这是一个属性宏，用于自动为 App 结构体实现 Live 和 LiveHook trait。
-Live: 这个 trait 是 Makepad 的核心，它允许 UI 在运行时进行热重载和动态更新。
-LiveHook: 这个 trait 提供了在 Live 模块加载和卸载时执行代码的钩子函数。
- */
 #[derive(Live, LiveHook)]
 struct App { //名为 App 的结构体，它代表了整个应用程序
     #[live] //属性宏表示 ui 字段是一个 Live 字段，这意味着它可以在运行时被修改和更新
     ui: WidgetRef, //ui 是 App 结构体的一个字段，它的类型是 WidgetRef。WidgetRef 是 Makepad 中用于引用 UI 组件的智能指针。
 }
- //AppMain 是 Makepad 中用于定义应用程序主循环的 trait。
-impl AppMain for App {
-    /* 这是 AppMain trait 要求实现的唯一方法。它负责处理应用程序中的所有事件，例如鼠标点击、键盘输入等。
-    cx: &mut Cx: Cx 是 Makepad 的核心上下文对象，它包含了应用程序的状态和资源。
-    event: &Event: Event 是一个枚举类型，表示各种不同的事件。
-    self.ui.handle_event(...): 这行代码将事件传递给 ui 组件进行处理。Scope::empty() 表示一个空的事件作用域。
-    */
-    fn handle_event(&mut self, cx: &mut Cx, event: &Event) { 
-        /* 
-        self.ui: 这表示访问 App 实例的 ui 字段。根据上下文，ui 字段是一个 WidgetRef 类型的智能指针，它指向应用程序的根 UI 组件。
-            中文解释: 访问 App 实例的 ui 字段，它指向根 UI 组件。
-
-        .handle_event(cx, event, &mut Scope::empty()): 这调用了 ui 组件的 handle_event 方法，并将 cx、event 和 &mut Scope::empty() 作为参数传递给它。
-            cx: 将 Makepad 上下文对象传递给 ui 组件，以便它可以使用应用程序的状态和资源。
-            event: 将发生的事件传递给 ui 组件，以便它能够处理该事件。
-            &mut Scope::empty(): 这创建了一个空的 Scope 对象，并将其作为可变引用传递给 ui 组件。Scope 用于管理事件的作用域，Scope::empty() 表示一个空的事件作用域。
-            中文解释: 调用根 UI 组件的 handle_event 方法来处理事件，并将上下文对象、事件对象和一个空的事件作用域传递给它。
-         */
-        self.ui.handle_event(cx, event, &mut Scope::empty());
-    }
-}
+/* 
+这是一个属性宏，用于自动为 App 结构体实现 Live 和 LiveHook trait。
+Live: 这个 trait 是 Makepad 的核心，它允许 UI 在运行时进行热重载和动态更新。
+LiveHook: 这个 trait 提供了在 Live 模块加载和卸载时执行代码的钩子函数。
+ */
 //LiveRegister trait 用于注册 Live 模块
 impl LiveRegister for App {
     //这是 LiveRegister trait 要求实现的方法。它负责注册应用程序中使用的所有 Live 模块。

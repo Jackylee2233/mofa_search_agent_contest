@@ -23,7 +23,7 @@ This project is based on Rust.
 - Clone the repository:
   - Command: `git clone https://github.com/Jackylee2233/mofa_search_agent_contest.git`
 
-#### Run the Project: (Ubuntu 24.10 tested)
+#### Run the Project: (Ubuntu 24.10 & MacBook Air A1466(intel cpu)  tested)
 1. Navigate to the project directory:
    - Command: `cd mofa_search_agent_contest`
 2. Start Dora services:
@@ -212,7 +212,15 @@ graph TD
 ### Relating to rust-analyzer
 Since the entire Dora project (`mofa_search_agent`) is placed within a single Rust project (`mofa_search_agent_contest`), the Dora project essentially functions as a Rust workspace. However, having a workspace nested within another Rust project is currently not supported by rust-analyzer for syntax hints, suggestions, and similar features.
 
+**VSCODE or Cursor**
 The solution is to open the Dora project separately in another IDE window. This way, you can fully utilize the support provided by rust-analyzer.
+
+**RustRover**
+RustRover IDE employs an innovative mechanism to resolve this issue efficiently, allowing you to fully leverage the capabilities of the rust-analyzer.
+
+**Zed Editor**
+- TODO!...
+
 
 ### License
 

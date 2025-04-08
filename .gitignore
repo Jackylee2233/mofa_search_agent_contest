@@ -4,7 +4,8 @@
 mofa_dev_notes.md
 Readme-old.md
 *.mmd
-.gitignore
+**/.gitignore
 **/workspace_resources
 **/makepad_index
 **/new_idea
+**/project_resources
