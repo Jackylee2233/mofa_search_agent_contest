@@ -43,7 +43,7 @@ Moly's frontend enables seamless interaction with remote LLM services without re
 
 - [ ] **To-Do**
   0. [x] With in `mofa_search_agent` workspace, create `mofa_frontend` project and add `moly-kit` as lib.03-28-2025 14:50
-  0.1 [ ] modify `mofa_frontend` base on `moly-mini`
+     01. [x] modify `mofa_frontend` base on `moly-mini`
   1. [ ] Upgrade `moly-server` to support WebSocket connections.
   2. [ ] Add `WebSocket` client functionality to the `moly_frontend`.
   3. [ ] Add `WebSocket` client to control node of the  `Dora` project.

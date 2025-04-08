@@ -212,13 +212,15 @@ graph TD
 ### Relating to rust-analyzer
 Since the entire Dora project (`mofa_search_agent`) is placed within a single Rust project (`mofa_search_agent_contest`), the Dora project essentially functions as a Rust workspace. However, having a workspace nested within another Rust project is currently not supported by rust-analyzer for syntax hints, suggestions, and similar features.
 
-**VSCODE or Cursor**
+**1. VScode or Cursor**
+
 The solution is to open the Dora project separately in another IDE window. This way, you can fully utilize the support provided by rust-analyzer.
 
-**RustRover**
+**2. RustRover**
+
 RustRover IDE employs an innovative mechanism to resolve this issue efficiently, allowing you to fully leverage the capabilities of the rust-analyzer.
 
-**Zed Editor**
+**3. Zed Editor**
 - TODO!...
 
 

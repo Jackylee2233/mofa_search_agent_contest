@@ -9,3 +9,6 @@ Readme-old.md
 **/makepad_index
 **/new_idea
 **/project_resources
+/.idea/modules.xml
+/.idea/mofa_search_agent_contest.iml
+/.idea/vcs.xml
